@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato&display=swap');
+*,*::after,*::before{
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html{
+  font-size: 62.5%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body{
+  box-sizing: border-box;
+  font-family: 'Fredoka One', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 2rem;
+  padding: 1.6rem;
+  text-align: center;
+  border-top: 1px solid darken($color: whitesmoke, $amount: 10) ;
+  background-color: white;
+  a{
+    text-decoration: none;
+    color: darken($color: whitesmoke, $amount: 10);
+    transition: color .5s;
+    &:hover{
+      color: grey;
+    }
+  }
+}
+.board{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: .8rem;
+  &__title{
+    font-size: 5.2rem;
+    color: #F15946;
+  }
+  &__sub-title{
+    font-size: 2.8rem;
+    color: #1C77C3;
+  }
+  &__main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3.2rem;
+    width: 60%;
+    &--bingo{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      margin-top: 3.2rem;
+      width: 95%;
+      height: 70vh;
+      border-radius: 1.5rem;
+    }
+  }
+  &__choice{
+    flex: 1;
+    text-align: center;
+    font-size: 2.8rem;
+    cursor: pointer;
+    position: relative;
+    .checklist{
+      position: absolute;
+      color: #5FAD56;
+      right: 50%;
+      font-size: 4rem;
+    }
+    &-group{ 
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.6rem;
+    }
+    &-container{
+      &--bingo{
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        .checklist{
+          position: absolute;
+          color: #5FAD56;
+          right: 50%;
+          top: 50%;
+          transform: translateXY(-50%,-50%);
+          font-size: 4rem;
+        }
+      }
+    }
+    &--bingo{
+      text-align: center;
+      font-size: 2.2rem;
+      cursor: pointer;
+      position: relative;
+      // padding: 1.6rem;
+      
+    }
+  }
+}
+.welcome{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__title{
+    font-size: 5.2rem;
+    color: #F15946;
+  }
+  &__sub-title{
+    font-size: 2.8rem;
+    color: #1C77C3;
+  }
+  &__link-button{
+    // height: fit-content;
+    padding: 1.6rem;
+    margin-top: 1.6rem;
+    a{
+      padding: 1.6rem;
+      background-color: #F2C14E;
+      color: black;
+      border-radius: 1.5rem;
+      text-decoration: none;
+      margin: .8rem;
+      transition: all .5s;
+      &:hover{
+        background-color: lighten($color: #F2C14E, $amount: 10);
+      }
+    }
+  }
+}
+@media screen and (max-width: 1023px){
+  .board{
+    &__main{
+      width: 90%;    
+    }
+  }
+}
+@media screen and (max-width: 767px){
+  footer{
+    font-size: 1.2rem;
+  }
+  .board{
+    &__main{
+      width: 95%;
+      &--bingo{
+        width: 100%;
+      }
+    }
+    &__choice{
+      font-size: 2.4rem;
+      &-container{
+        &--bingo{
+          .checklist{
+            font-size: 2.8rem;
+          }
+        }
+      }
+      &--bingo{
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+@media screen and (max-width: 374px){
+  footer{
+    font-size: 1.1rem;
+  }
+  .board{
+    &__title{
+      font-size: 4rem;
+    }
+    &__sub-title{
+      font-size: 2.4rem;
+    }
+  }
+  .welcome{
+    &__title{
+      font-size: 4rem;
+    }
+    &__sub-title{
+      font-size: 2.4rem;
+    }
+  }
+}
+@keyframes strike{
+  0%   { width : 0; }
+  100% { width: 100%; }
+}
+@keyframes strike-out{
+  0%   { width : 100%; }
+  100% { width: 0; }
+}
+.strike {
+  position: relative;
+  &::after{
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: .4rem;
+    background: black;
+    animation-name: strike;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  &--out{
+    position: relative;
+    &::after{
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0%;
+      height: .4rem;
+      background: black;
+      animation-name: strike-out;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+}
