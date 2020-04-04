@@ -4,9 +4,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faArrowAltCircleLeft} from '@fortawesome/free-solid-svg-icons';
 
 import { BINGO_CHOICE } from '../utils/constant'
+
+import {Link} from 'gatsby'
 
 const IndexPage = () => {
   const [Data,setData] = useState(BINGO_CHOICE)
@@ -19,6 +21,9 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <div className="board">
+        <div className="back-button__container">
+          <Link className="back-button" to="/"><FontAwesomeIcon icon={faArrowAltCircleLeft}/></Link>
+        </div>
         <h1 className="board__title">Bingo !</h1>
         <h2 className="board__sub-title">Versinya IF-K03</h2>
         <div className="board__main--bingo">

@@ -18,7 +18,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
 }
 footer{
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   font-size: 2rem;
@@ -41,6 +41,7 @@ footer{
   justify-content: center;
   align-items: center;
   padding: .8rem;
+  margin-bottom: .8rem;
   &__title{
     font-size: 5.2rem;
     color: #F15946;
@@ -73,7 +74,9 @@ footer{
     .checklist{
       position: absolute;
       color: #5FAD56;
-      right: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 4rem;
     }
     &-group{ 
@@ -93,10 +96,9 @@ footer{
         .checklist{
           position: absolute;
           color: #5FAD56;
-          right: 50%;
-          top: 50%;
-          transform: translateXY(-50%,-50%);
-          font-size: 4rem;
+          right: 0%;
+          top: 0%;
+          font-size: 2.4rem;
         }
       }
     }
@@ -143,6 +145,15 @@ footer{
     }
   }
 }
+.back-button{
+  color: #F2C14E;
+  font-size: 3.2rem;
+  margin: .8rem;
+  &__container{
+    width: 100%;
+    text-align: left;
+  }
+}
 @media screen and (max-width: 1023px){
   .board{
     &__main{
@@ -166,7 +177,7 @@ footer{
       &-container{
         &--bingo{
           .checklist{
-            font-size: 2.8rem;
+            font-size: 1.4rem;
           }
         }
       }
